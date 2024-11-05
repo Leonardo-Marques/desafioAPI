@@ -8,6 +8,35 @@ let contatos = [];
 
 const MAX_CONTATOS = 30;
 
+app.get('/', (req, res) => {
+  res.json({
+    message: 'Bem-vindo à API de Contatos!',
+    availableEndpoints: [
+      {
+        method: 'GET',
+        path: '/contatos',
+        description: 'Lista todos os contatos cadastrados.'
+      },
+      {
+        method: 'POST',
+        path: '/contatos',
+        description: 'Adiciona um novo contato.'
+      },
+      {
+        method: 'DELETE',
+        path: '/contatos',
+        description: 'Zera todos os contatos (remove todos).'
+      },
+      {
+        method: 'GET',
+        path: '/contatos/:cpf',
+        description: 'Busca um contato pelo CPF.'
+      }
+    ]
+  });
+});
+
+
 app.get('/contatos', (req, res) => {
   res.json(contatos);
 });
